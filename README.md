@@ -18,3 +18,7 @@ This project showcases my progress during the interview stage and what I was abl
 - open modal for event editting, however did not get to finish implementing it
 
 After the interview, I refactored the app by finishing all of the goals set during the interview as well as restructuring the repo so that it is more organized. [Check it out here](https://github.com/daxidngyn/ramp-fe-interview-stage1/tree/post-interview).
+
+## Post Interview Thoughts
+
+I believe that I definitely should have practiced a little more before the interview. I know I could have done a lot better, made evident by what I cooked up after the interview with a 20 minute timeframe. Overall, very fun interview that allowed me to practice with many concepts I havn't been able to use for a while.
