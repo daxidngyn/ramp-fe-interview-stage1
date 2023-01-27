@@ -22,9 +22,20 @@ export default function EventModal({
   const [endTime, setEndTime] = useState(
     isCreating ? initialEventTime : event.endTime
   );
+  const [err, setErr] = useState("");
 
   const updateEvents = (e: any) => {
     e.preventDefault();
+    setErr("");
+
+    if (!title) {
+      setErr("You must input a valid title!");
+      return;
+    }
+    if (!startTime || !endTime) {
+      setErr("You must input a valid start time and end time!");
+      return;
+    }
 
     if (isCreating) {
       const newEvent = {
@@ -40,9 +51,16 @@ export default function EventModal({
     }
 
     // editting
-    const idx = events.findIndex((e: any) => e.id == event.id);
+    const prevEvents = events;
+    const idx = prevEvents.findIndex((e: any) => e.id == event.id);
 
-    console.log(events[idx]);
+    prevEvents[idx].title = title;
+    prevEvents[idx].startTime = startTime;
+    prevEvents[idx].endTime = endTime;
+
+    setEvents([...prevEvents]);
+
+    console.log(prevEvents[idx]);
   };
 
   return (
@@ -50,8 +68,8 @@ export default function EventModal({
       className="shadow-lg drop-shadow-md rounded-lg absolute top-2/4 left-2/4 bg-zinc-100 max-w-2xl w-full"
       style={{ transform: "translate(-50%, -50%)" }}
     >
-      <form onSubmit={updateEvents}>
-        <div className="flex items-center justify-between pt-4 pb-2 px-4">
+      <form onSubmit={updateEvents} className="px-4">
+        <div className="flex items-center justify-between pt-4 pb-2">
           <h2 className="font-medium text-3xl">
             {isCreating ? "Creating" : "Editting"} Event
           </h2>
@@ -60,7 +78,7 @@ export default function EventModal({
           </button>
         </div>
 
-        <div className="flex flex-col py-2 px-4 space-y-3">
+        <div className="flex flex-col py-2 space-y-3">
           <div className="flex flex-col">
             <label className="font-medium">EVENT TITLE</label>
             <input
@@ -90,7 +108,9 @@ export default function EventModal({
           </div>
         </div>
 
-        <div className="px-4 pt-2 pb-4">
+        {err && <div className="font-medium text-red-500">{err}</div>}
+
+        <div className="pt-2 pb-4">
           <button type="submit" className="bg-black text-white px-2 py-1">
             <span className="font-medium">
               {isCreating ? "Create" : "Update"} event
