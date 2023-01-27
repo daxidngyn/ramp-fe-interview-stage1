@@ -8,9 +8,10 @@ export default function Event({
   return (
     <article
       onClick={() => toggleModal(event)}
-      className="bg-red-100 absolute ml-8 w-full p-2 rounded-lg"
+      className="bg-red-100 absolute left-8 w-full p-2 rounded-lg"
       style={{
         top: `${event.startTime * 2.5}rem`,
+        width: `calc(100% - 2rem)`,
         height: `${(event.endTime - event.startTime) * 2.5}rem`,
       }}
     >
