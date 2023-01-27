@@ -36,6 +36,17 @@ export default function EventModal({
       setErr("You must input a valid start time and end time!");
       return;
     }
+    if (startTime == endTime) {
+      setErr("Start and end time cannot be the same!");
+      return;
+    }
+    if (
+      !(startTime >= 0 && startTime <= 24) ||
+      !(endTime >= 0 && endTime <= 24)
+    ) {
+      setErr("Start and end time must be in range!");
+      return;
+    }
 
     if (isCreating) {
       const newEvent = {
