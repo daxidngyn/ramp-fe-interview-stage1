@@ -48,9 +48,8 @@ export default function Calendar() {
         </section>
       ))}
 
-      {events.map((event) => (
-        <Event event={event} toggleModal={editEvent} />
-      ))}
+      {events &&
+        events.map((event) => <Event event={event} toggleModal={editEvent} />)}
 
       {createEventModalOpen && (
         <EventModal

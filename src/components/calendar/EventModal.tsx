@@ -74,6 +74,13 @@ export default function EventModal({
     console.log(prevEvents[idx]);
   };
 
+  const deleteEvent = () => {
+    setEvents((currentEvents: any) => {
+      currentEvents.filter((e: any) => e.id !== event.id);
+    });
+    toggleModal();
+  };
+
   return (
     <div
       className="shadow-lg drop-shadow-md rounded-lg absolute top-2/4 left-2/4 bg-zinc-100 max-w-2xl w-full"
@@ -121,12 +128,21 @@ export default function EventModal({
 
         {err && <div className="font-medium text-red-500">{err}</div>}
 
-        <div className="pt-2 pb-4">
+        <div className="pt-2 pb-4 flex items-center justify-between">
           <button type="submit" className="bg-black text-white px-2 py-1">
             <span className="font-medium">
               {isCreating ? "Create" : "Update"} event
             </span>
           </button>
+
+          {!isCreating && (
+            <button
+              className="bg-red-500 text-white px-2 py-1"
+              onClick={deleteEvent}
+            >
+              Delete event
+            </button>
+          )}
         </div>
       </form>
     </div>
