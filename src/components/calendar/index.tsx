@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Event from "./Event";
 import EventModal from "./EventModal";
 
 export default function Calendar() {
@@ -17,7 +18,7 @@ export default function Calendar() {
     if (editEventModalOpen) toggleEditEventModal();
     setCreateEventModalOpen(!createEventModalOpen);
   };
-  const createEvent = (i) => {
+  const createEvent = (i: number) => {
     setInitialEventTime(i);
     toggleCreateEventModal();
   };
@@ -28,7 +29,7 @@ export default function Calendar() {
     if (createEventModalOpen) toggleCreateEventModal();
     setEditEventModalOpen(!editEventModalOpen);
   };
-  const editEvent = (event) => {
+  const editEvent = (event: any) => {
     setFocusedEvent(event);
     toggleEditEventModal();
   };
@@ -48,21 +49,7 @@ export default function Calendar() {
       ))}
 
       {events.map((event) => (
-        <article
-          onClick={() => editEvent(event)}
-          className="bg-red-100 absolute ml-8 w-full p-2 rounded-lg"
-          style={{
-            top: `${event.startTime * 2.5}rem`,
-            height: `${(event.endTime - event.startTime) * 2.5}rem`,
-          }}
-        >
-          <div className="flex gap-x-2">
-            <span className="font-medium">{event.title}</span>
-            <span>
-              {event.startTime}-{event.endTime}
-            </span>
-          </div>
-        </article>
+        <Event event={event} toggleModal={editEvent} />
       ))}
 
       {createEventModalOpen && (
