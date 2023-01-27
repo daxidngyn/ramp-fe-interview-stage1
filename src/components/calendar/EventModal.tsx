@@ -51,7 +51,7 @@ export default function EventModal({
     if (isCreating) {
       const newEvent = {
         title: title,
-        id: events.length,
+        id: events ? events.length : 0,
         startTime: startTime,
         endTime: endTime,
       };
@@ -75,9 +75,8 @@ export default function EventModal({
   };
 
   const deleteEvent = () => {
-    setEvents((currentEvents: any) => {
-      currentEvents.filter((e: any) => e.id !== event.id);
-    });
+    const newEvents = events.filter((e: any) => e.id !== event.id);
+    setEvents([...newEvents]);
     toggleModal();
   };
 
