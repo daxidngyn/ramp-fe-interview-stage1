@@ -17,4 +17,4 @@ This project showcases my progress during the interview stage and what I was abl
 - implement event creation
 - open modal for event editting, however did not get to finish implementing it
 
-After the interview, I refactored the app by finishing all of the goals set during the interview as well as restructuring the repo so that it is more organized. [Check it out here](/github/daxidngyn/ramp-fe-interview-stage1/post-interview).
+After the interview, I refactored the app by finishing all of the goals set during the interview as well as restructuring the repo so that it is more organized. [Check it out here](/tree/post-interview).
